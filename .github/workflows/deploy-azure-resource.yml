@@ -45,7 +45,7 @@ jobs:
       - name: Preview Changes fron Bicep
         uses: Azure/deployment-what-if-action@v1.0.0
         with:
-          subscription: ${{ secrets.SUBSCRIPTION_ID  }} # Subscription ID
+          subscription: ${{ secrets.AZURE_SUBSCRIPTION_ID  }} # Subscription ID
           resourceGroup: $RESOURCE_GROUP # Resource group name
           templateFile: 01-bicep-webapp/webapp-linux.bicep # ARM template or Bicep file
           # parametersFile: # optional # Parameters file for the ARM template or Bicep
@@ -54,7 +54,7 @@ jobs:
       - name: Deploy Bicep to Azure
         uses: azure/arm-deploy@v1
         with:
-          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ env.RESOURCE_GROUP }} # $RESOURCE_GROUP
           template: 01-bicep-webapp/webapp-linux.bicep
           failOnStdErr: false
